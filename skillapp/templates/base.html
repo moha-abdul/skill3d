@@ -12,7 +12,7 @@
 
   {% block styles %}
     {% bootstrap_css %}
-    
+    {% include 'material/includes/material_css.html' %}
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
   {% endblock %}
 {% endblock %}
@@ -27,6 +27,8 @@
   {% block scripts %}
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{% static 'material/js/jquery.js' %}"></script>
+    {% include 'material/includes/material_js.html' %}
     {% bootstrap_javascript %}
   {% endblock %}
 

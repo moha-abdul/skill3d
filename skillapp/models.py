@@ -17,7 +17,9 @@ class Profile(models.Model):
 
 class Section(models.Model):
     name = models.CharField(max_length=50)
+    description = models.CharField(max_length=200,null=True)
     subsribers = models.CharField(max_length=20)
+    photo  = models.ImageField(upload_to = 'section/',null=True)
     admin = models.ForeignKey('Profile', related_name='Section',null=True)
 
     def __str__(self):

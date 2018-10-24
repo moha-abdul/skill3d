@@ -1,24 +1,35 @@
 {% extends 'base.html'%}
 {% load bootstrap3 %}
-{{ form.media}}
 
 {% block content %}
-<h3>post question</h3>
-
 <div class="container">
   <div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-
-      <form action="#" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {% bootstrap_form form%}
-      <div class="text-center">
-        <input type="submit" class="btn btn-primary" value="Post">
-      </div>
-      </form>
+  {% for section in sections %}
+  <div class="col-md-4">
+  <!-- Card -->
+  <div class="card">
+  <!-- Card image -->
+    <div class="view overlay">
+      <img class="card-img-top" src="{{section.photo.url}}" alt="Card image cap" style="height:200px; width:100%;">
+      <a href="#!">
+        <div class="mask rgba-white-slight"></div>
+      </a>
     </div>
-    <div class="col-md-4"></div>
+  <!-- Card content -->
+    <div class="card-body">
+
+      <!-- Title -->
+      <h4 class="card-title">{{section.name}}</h4>
+      <!-- Text -->
+      <p class="card-text">{{section.description}}</p>
+      <!-- Button -->
+      <a href="#" class="btn btn-primary">Enter</a>
+    </div>
+
+  </div>
+<!-- Card -->
+   </div>
+  {% endfor %}
   </div>
 </div>
 {% endblock %}
