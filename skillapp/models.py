@@ -31,5 +31,6 @@ class Section(models.Model):
     def delete_section(self):
         self.delete()
 
-class Question(models.Model):
+class Posts(models.Model):
     question = models.TextField(max_length=100)
+    section = models.ForeignKey(Section,related_name='Posts',null=True)
