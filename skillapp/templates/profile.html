@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% block content %}
+<div class="container">
+
+	<header>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+					<div class="profile">
+					<a href="{% url 'edit_profile' %}"><button class="btn profile-edit-btn">Edit Profile</button></a>
+					{% if profile %}
+						<div class="profile-user-settings">
+							<h1 class="profile-user-name">{{ request.user.username }}</h1>
+							<p><span class="profile-real-name"></span></p>
+						</div>
+						<div class="profile-bio">
+							<p><span class="profile-real-name"></span>{{request.user.profile.bio}}</p>
+						</div>
+						<div class="profile-bio">
+							
+						</div>
+					{% else %}
+						<p>please set up your profile</p>
+					{% endif %}
+					</div>
+				</div>
+			</div>
+			<!-- End of profile section -->
+		</div>
+		<!-- End of container -->
+	</header>
+</div>
+{% endblock %}

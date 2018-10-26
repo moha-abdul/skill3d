@@ -1,0 +1,26 @@
+<nav class="navbar fixed-top navbar-dark indigo">
+    <a class="navbar-brand" href="/">Skill3d</a>
+    <div class="navbar" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'profile' %}">Logged in as </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="/logout">Logout</a>
+        </li>
+        {% else %}
+        <li>
+            <a class='btn btn-default' href="/accounts/login">Login</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>

@@ -1,0 +1,24 @@
+{% extends 'base.html'%}
+{% load bootstrap3 %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <button><a href="{% url 'new_post' %}">Add new post</a></button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            {% if posts %}
+                {% for post in posts %}
+                <a href="/post/{{post.id}}"><h3>{{post.title}}</h3>
+                <p>{{post.description}}</p></a>
+                {% endfor %}
+            {% else %}
+            <p>No posts in this section, be the first to post</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html'%}
+{% load bootstrap3 %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    {% if post %}
+      {{ post.title }}
+      {{ post.description }}
+    {% else %}
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
