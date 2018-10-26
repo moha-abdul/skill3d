@@ -11,7 +11,7 @@
           <a class="nav-link" href="{% url 'profile' %}">Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'profile' %}">Logged in as </a>
+          <a class="nav-link" href="{% url 'profile' %}">Logged in as {{current_user.username}}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" href="/logout">Logout</a>

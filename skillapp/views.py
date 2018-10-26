@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Profile, Section, Posts
-from .forms import SignupForm, PostForm, ProfileForm
+from .models import Profile, Section, Posts, Answers
+from .forms import SignupForm, PostForm, ProfileForm, AnswerForm
 
 # def signup(request):
 #     return render(request,"registration/registration_form.html")
@@ -63,7 +63,18 @@ def new_post(request):
 
 @login_required
 def post(request,post_id):
-    post = Posts.objects.get(section=request.user.profile.section)
-    # comments = Comment.objects.all()
-    # co_form = CommentForm()
-    return render(request,'skill/post.html',{"post": post})
+    post = Posts.objects.get(id=post_id)
+    answers = Answers.objects.all()
+    ans_form = AnswerForm()
+    return render(request,'skill/post.html',{"post": post,"ans_form":ans_form,"answers":answers})
+
+def answer(request,id):
+    answer = Post.objects.get(id=id)
+    if request.method == 'POST':
+        answer_form = AnswerForm(request.POST)
+        if answer_form.is_valid():
+            ans = answer_form.save(commit=False)
+            ans.user = request.user
+            ans.post = answer
+            ans.save()
+        return redirect('answer')

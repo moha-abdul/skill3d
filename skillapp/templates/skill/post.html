@@ -4,11 +4,22 @@
 {% block content %}
 <div class="container">
   <div class="row">
-    {% if post %}
-      {{ post.title }}
-      {{ post.description }}
-    {% else %}
-    {% endif %}
+    {{ post.title }}
+    {{ post.description }}
+    </a>
+    <div>
+      {% for answer in answers %}
+      <h3>{{answer.title}}</h3>
+      <p>{{answer.answer}}</p>
+      {% endfor %}
+    </div>
+    <div>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form ans_form %}
+      <div class="text-center">  <input type="submit" class="btn btn-primary" value="Post"></div>
+  </form>
+    </div>
   </div>
 </div>
 {% endblock %}

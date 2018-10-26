@@ -10,8 +10,8 @@ urlpatterns=[
     url(r'^edit_profile/', views.edit_profile, name = 'edit_profile'),
     url(r'section/(\d+)',views.section, name = 'section'),
     url(r'^new_post/', views.new_post, name = 'new_post'),
-    
     url(r'post/(\d+)',views.post, name = 'post'),
+    url(r'answer/(\d+)',views.answer, name = 'answer'),
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
